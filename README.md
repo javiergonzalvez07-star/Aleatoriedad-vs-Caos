@@ -79,5 +79,5 @@ Therefore, chaos should not be confused with randomness: it arises from determin
 
 ## Author
 
-Personal project developed as part of self-study in applied mathematics, physics, and scientific programming.
+Personal project developed as part of self-study in applied mathematics, physics, and scientific programming by Javier Gonzálvez Sempere.
 
