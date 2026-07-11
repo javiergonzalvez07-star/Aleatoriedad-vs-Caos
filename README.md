@@ -1,83 +1,103 @@
-# Random vs Chaos: Numerical Simulations in Python
+# Randomness vs Chaos: Numerical Experiments in Python
 
-This project explores the difference between **random processes** and **chaotic deterministic systems** through simple numerical simulations.  
-Although random and chaotic signals may look similar at first glance, their underlying nature is fundamentally different.
+A numerical exploration of the difference between **stochastic processes** and **deterministic chaotic systems**.
 
-The goal of this project is to show that **chaos is not randomness**: chaotic systems are deterministic and reproducible, but extremely sensitive to initial conditions.
+Random and chaotic signals can look similar, but their underlying mechanisms are fundamentally different. This project uses reproducibility tests, time-series visualisations, the logistic map, and a double-pendulum simulation to show a central idea:
 
----
+> Chaos is not randomness. A chaotic system is governed by deterministic equations, yet small differences in initial conditions can produce radically different trajectories.
 
-## Project Overview
+## Systems studied
 
-Several systems are studied and compared:
+### Random sequence
 
-- **Random sequence**
-  - Purely stochastic behavior
-  - Non-reproducible without fixing a random seed
+Used as a stochastic reference:
 
-- **Deterministic periodic system**
-  - A simple sinusoidal signal used as a non-chaotic deterministic reference
+- values are generated probabilistically;
+- results are not reproducible unless the random seed is fixed;
+- apparent unpredictability comes from the generation process itself.
 
-- **Logistic map**
-  - A classic example of a chaotic discrete dynamical system
-  - Deterministic but highly sensitive to initial conditions
+### Periodic deterministic system
 
-- **Double pendulum**
-  - A continuous-time chaotic mechanical system
-  - Simulated numerically using the Runge–Kutta method
+A sinusoidal signal provides a non-chaotic deterministic baseline:
 
-These systems are analyzed using time series, trajectory plots, and reproducibility tests.
+- the governing rule is fixed;
+- the trajectory is reproducible;
+- nearby initial conditions do not diverge dramatically.
 
----
+### Logistic map
 
-## Key Concepts Illustrated
+The logistic map is used as a compact example of discrete chaos:
 
-- Difference between **randomness and determinism**
-- **Reproducibility** of deterministic systems
-- **Sensitivity to initial conditions** as a defining feature of chaos
-- Why chaotic systems can appear random despite being governed by exact equations
+- the update rule is deterministic;
+- the same initial condition produces the same sequence;
+- nearby initial conditions can diverge quickly in chaotic parameter regimes.
 
----
+### Double pendulum
 
-## Numerical Methods
+The double pendulum provides a continuous mechanical example:
 
-- Time integration is performed using the **Runge–Kutta method of fourth order (RK4)**.
-- The method provides stable and accurate integration without introducing randomness into the dynamics.
+- the equations of motion are deterministic;
+- trajectories are integrated numerically;
+- very small changes in the starting state can lead to visibly different motion.
 
----
+## Numerical method
 
-## Tools Used
+The continuous dynamics are integrated using the **fourth-order Runge-Kutta method (RK4)**.
 
-- Python  
-- NumPy  
-- Matplotlib  
+RK4 provides an accurate deterministic time-stepping method and makes it possible to separate numerical simulation from the concept of randomness: the apparent unpredictability comes from sensitivity to initial conditions, not from random terms in the equations.
+
+## What the notebook demonstrates
+
+- stochastic and deterministic signals can appear visually similar;
+- fixing a random seed restores reproducibility to a random generator, but does not make the process deterministic in the physical sense;
+- deterministic systems reproduce exactly when initial conditions and parameters are unchanged;
+- chaotic systems amplify tiny initial differences;
+- predictability can be limited even when the governing equations are known.
+
+## Repository structure
+
+```text
+simulaciones.ipynb
+```
+
+The notebook contains the simulations, visualisations, comparisons, and conclusions.
+
+## Technologies
+
+- Python
+- NumPy
+- Matplotlib
 - Jupyter Notebook
+- Numerical integration with RK4
 
----
+## How to run
 
-## Structure
+```bash
+git clone https://github.com/javiergonzalvez07-star/Aleatoriedad-vs-Caos.git
+cd Aleatoriedad-vs-Caos
 
-- `simulaciones.ipynb`  
-  Main notebook containing:
-  - simulations
-  - visualizations
-  - explanations
-  - conclusions
+python -m venv .venv
+python -m pip install --upgrade pip
+python -m pip install numpy matplotlib jupyter
+```
 
----
+Open `simulaciones.ipynb` and run the cells in order.
 
-## Conclusions
+## Limitations and next steps
 
-The simulations show that:
-- Random systems are not reproducible unless a seed is fixed.
-- Chaotic systems are fully deterministic and reproducible with the same initial conditions.
-- Small differences in initial conditions lead to drastically different outcomes in chaotic systems.
+The project is designed as an intuitive numerical study rather than a complete nonlinear-dynamics analysis. Future extensions could include:
 
-Therefore, chaos should not be confused with randomness: it arises from deterministic rules combined with strong sensitivity to initial conditions.
-
----
+- Lyapunov-exponent estimation;
+- bifurcation diagrams for the logistic map;
+- Poincare sections;
+- phase-space reconstruction;
+- quantitative divergence-rate comparisons;
+- sensitivity to numerical step size.
 
 ## Author
 
-Personal project developed as part of self-study in applied mathematics, physics, and scientific programming by Javier Gonzálvez Sempere.
+**Javier Gonzálvez Sempere**  
+Double Degree student in Mathematical Engineering and Physics.
 
+- Portfolio: https://javiergonzalvez07-star.github.io/
+- GitHub: https://github.com/javiergonzalvez07-star
